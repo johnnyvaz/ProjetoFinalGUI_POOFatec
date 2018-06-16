@@ -9,15 +9,15 @@ public class BancoDados {
     public Connection conecta(){
         try{
            // carrega o Driver JDBC do MySQL
-           // Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
            // carrega o Driver JDBC do SQL Server
-           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+           //Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             // local de conexão - onde está o BD - MySQL
-            // String url = "jdbc:mysql://localhost/academico";
+             String url = "jdbc:mysql://localhost:3307/academico";
             // local de conexão - onde está o BD - SQL Server
-            String url = "jdbc:sqlserver://localhost:1433";
+            //String url = "jdbc:sqlserver://localhost:1433";
             // faz a conexão
-            conexao = DriverManager.getConnection(url, "sa", "fatec123*");
+            conexao = DriverManager.getConnection(url, "root", "");
             return conexao;
         }
         catch(Exception e){

@@ -2,15 +2,18 @@ mysql> create database academico;
 
 mysql> use academico;
 
-mysql> create table aluno(
-	codigo int, 
-	cidade varchar(20), 
-	cpf varchar(15), 
-	documentos varchar(50), 
-	endereco varchar(30), 
-	estado varchar(20), 
-	nome varchar(30), 
-	rg varchar(15), 
-	sexo varchar(10), 
-	primary key(codigo)
-       );
+mysql>CREATE TABLE `aluno` (
+	`codigo` INT(11) NOT NULL AUTO_INCREMENT,
+	`cidade` VARCHAR(20) NULL DEFAULT NULL COLLATE 'utf8_unicode_ci',
+	`cpf` VARCHAR(15) NULL DEFAULT NULL COLLATE 'utf8_unicode_ci',
+	`documentos` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8_unicode_ci',
+	`endereco` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8_unicode_ci',
+	`estado` VARCHAR(20) NULL DEFAULT NULL COLLATE 'utf8_unicode_ci',
+	`nome` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8_unicode_ci',
+	`rg` VARCHAR(15) NULL DEFAULT NULL COLLATE 'utf8_unicode_ci',
+	`sexo` VARCHAR(10) NULL DEFAULT NULL COLLATE 'utf8_unicode_ci',
+	PRIMARY KEY (`codigo`)
+)
+COLLATE='utf8_unicode_ci'
+ENGINE=MyISAM
+;
