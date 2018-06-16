@@ -57,7 +57,7 @@ public class CadastroAluno extends javax.swing.JFrame {
 
         estado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "São Paulo", "Minas Gerais", "Rio de Janeiro", "Espírito Santo" }));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 51, 255));
         jLabel5.setText("Tela de Cadastro de Alunos");
 
@@ -87,8 +87,7 @@ public class CadastroAluno extends javax.swing.JFrame {
 
         contrato.setText("Contrato");
 
-        jButton1.setBackground(new java.awt.Color(255, 0, 51));
-        jButton1.setForeground(new java.awt.Color(255, 0, 102));
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Cadastrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

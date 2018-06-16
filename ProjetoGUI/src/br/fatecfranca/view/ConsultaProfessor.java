@@ -1,17 +1,17 @@
 
 package br.fatecfranca.view;
 
-import br.fatecfranca.controller.AlunoController;
-import br.fatecfranca.model.Aluno;
+import br.fatecfranca.controller.ProfessorController;
+import br.fatecfranca.model.Professor;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class ConsultaAluno extends javax.swing.JFrame {
+public class ConsultaProfessor extends javax.swing.JFrame {
     private DefaultTableModel modeloTabela;
-    private ArrayList<Aluno> alunos;
-    /** Creates new form ConsultaAluno */
-    public ConsultaAluno() {
+    private ArrayList<Professor> professors;
+    /** Creates new form ConsultaProfessor */
+    public ConsultaProfessor() {
         initComponents();
         // recupera modelo da tabela
         modeloTabela = (DefaultTableModel) tabela.getModel();
@@ -32,9 +32,9 @@ public class ConsultaAluno extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel1.setText("Consulta Alunos");
+        jLabel1.setText("Consulta Professor");
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -114,32 +114,32 @@ public class ConsultaAluno extends javax.swing.JFrame {
 public void atualizaTabela(){
           btnRemove.setEnabled(false);
           btnAtualiza.setEnabled(false);
-    AlunoController alunoController = new
-            AlunoController();
-    alunos = (ArrayList) alunoController.consulta();
+    ProfessorController professorController = new
+            ProfessorController();
+    professors = (ArrayList) professorController.consulta();
     // limpa a tabela
     modeloTabela.setRowCount(0);
     // alimenta tabela
-    if (alunos == null) {
+    if (professors == null) {
         JOptionPane.showMessageDialog(null, 
                 "Problema na consulta");
     }
-    else if (alunos.isEmpty()){
+    else if (professors.isEmpty()){
             JOptionPane.showMessageDialog(null, 
-                    "Não foram encontrados alunos");
+                    "Não foram encontrados professors");
         }
         else {
             Object objetos[] = new Object[9];
-            for (Aluno aluno: alunos){ // para cada aluno
-                objetos[0] = aluno.getCodigo();
-                objetos[1] = aluno.getNome();
-                objetos[2] = aluno.getEndereco();
-                objetos[3] = aluno.getCidade();
-                objetos[4] = aluno.getEstado();
-                objetos[5] = aluno.getCpf();
-                objetos[6] = aluno.getRg();
-                objetos[7] = aluno.getSexo();
-                objetos[8] = aluno.getDocumentos();
+            for (Professor professor: professors){ // para cada professor
+                objetos[0] = professor.getCodigo();
+                objetos[1] = professor.getNome();
+                objetos[2] = professor.getEndereco();
+                objetos[3] = professor.getCidade();
+                objetos[4] = professor.getEstado();
+                objetos[5] = professor.getCpf();
+                objetos[6] = professor.getRg();
+                objetos[7] = professor.getSexo();
+                objetos[8] = professor.getDocumentos();
                 modeloTabela.addRow(objetos);
             }
         } 
@@ -165,10 +165,10 @@ private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         int linha = tabela.getSelectedRow();
         int codigo = 
 Integer.parseInt(modeloTabela.getValueAt(linha, 0).toString());
-        Aluno aluno = new Aluno();
-        aluno.setCodigo(codigo);
-        AlunoController alunoController = new AlunoController();
-        if (alunoController.remove(aluno) == 1){
+        Professor professor = new Professor();
+        professor.setCodigo(codigo);
+        ProfessorController professorController = new ProfessorController();
+        if (professorController.remove(professor) == 1){
             JOptionPane.showMessageDialog(null, "Removeu");
             atualizaTabela();
         }
@@ -179,15 +179,15 @@ Integer.parseInt(modeloTabela.getValueAt(linha, 0).toString());
 
 private void btnAtualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizaActionPerformed
 // TODO add your handling code here:
-    AtualizaAluno atualizaAluno = new AtualizaAluno();
+    AtualizaProfessor atualizaProfessor = new AtualizaProfessor();
     // recupera linha selecionada
     int linha = tabela.getSelectedRow();
-    // recupera aluno selecionado do ArrayList
-    Aluno alunoSelecionado = alunos.get(linha); 
-    // atribui alunoSelecionado para objeto atualizaAluno
-    atualizaAluno.setAlunoSelecionado(alunoSelecionado);
-    atualizaAluno.alimentaFormulario();
-    atualizaAluno.setVisible(true);
+    // recupera professor selecionado do ArrayList
+    Professor professorSelecionado = professors.get(linha); 
+    // atribui professorSelecionado para objeto atualizaProfessor
+    atualizaProfessor.setProfessorSelecionado(professorSelecionado);
+    atualizaProfessor.alimentaFormulario();
+    atualizaProfessor.setVisible(true);
 }//GEN-LAST:event_btnAtualizaActionPerformed
 
     /**
@@ -207,13 +207,13 @@ private void btnAtualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConsultaAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConsultaAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConsultaAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConsultaAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -221,7 +221,7 @@ private void btnAtualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new ConsultaAluno().setVisible(true);
+                new ConsultaProfessor().setVisible(true);
             }
         });
     }

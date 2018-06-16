@@ -1,4 +1,4 @@
-<?xml version="1.1" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
@@ -10,6 +10,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -40,29 +41,29 @@
               </Group>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="cpf" pref="263" max="32767" attributes="1"/>
+                  <Component id="cpf" max="32767" attributes="1"/>
                   <Group type="102" attributes="1">
                       <Component id="masculino" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="125" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="feminino" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="estado" pref="263" max="32767" attributes="1"/>
-                  <Component id="cidade" pref="263" max="32767" attributes="1"/>
-                  <Component id="endereco" pref="263" max="32767" attributes="1"/>
-                  <Component id="nome" alignment="0" pref="263" max="32767" attributes="1"/>
-                  <Component id="rg" alignment="0" pref="263" max="32767" attributes="1"/>
+                  <Component id="estado" max="32767" attributes="1"/>
+                  <Component id="cidade" max="32767" attributes="1"/>
+                  <Component id="endereco" max="32767" attributes="1"/>
+                  <Component id="nome" alignment="0" max="32767" attributes="1"/>
+                  <Component id="rg" alignment="0" max="32767" attributes="1"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="em" min="-2" max="-2" attributes="0"/>
+                      <Component id="li" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="militar" min="-2" max="-2" attributes="0"/>
+                      <Component id="gr" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="contrato" min="-2" max="-2" attributes="0"/>
+                      <Component id="me" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="104" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="jButton2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -71,7 +72,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="164" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -118,10 +119,10 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="em" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="li" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="militar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="contrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="gr" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="me" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -140,6 +141,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="nome">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomeActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -180,7 +184,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="33" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Tela de Cadastro de Alunos"/>
+        <Property name="text" type="java.lang.String" value="Tela de Cadastro de Professor"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
@@ -223,9 +227,9 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="em">
+    <Component class="javax.swing.JCheckBox" name="li">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Conclus&#xe3;o EM"/>
+        <Property name="text" type="java.lang.String" value="Licenciatura LI"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
@@ -233,23 +237,20 @@
         <Property name="text" type="java.lang.String" value="Documentos"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="militar">
+    <Component class="javax.swing.JCheckBox" name="gr">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Militar"/>
+        <Property name="text" type="java.lang.String" value="Gradua&#xe7;&#xe3;o GR"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="contrato">
+    <Component class="javax.swing.JCheckBox" name="me">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Contrato"/>
+        <Property name="text" type="java.lang.String" value="Mestrado ME"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="0" red="ff" type="rgb"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="66" green="0" red="ff" type="rgb"/>
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cadastrar"/>
       </Properties>

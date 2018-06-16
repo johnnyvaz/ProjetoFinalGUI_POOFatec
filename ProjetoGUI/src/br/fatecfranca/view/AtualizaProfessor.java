@@ -1,39 +1,39 @@
 package br.fatecfranca.view;
-import br.fatecfranca.controller.AlunoController;
-import br.fatecfranca.model.Aluno;
+import br.fatecfranca.controller.ProfessorController;
+import br.fatecfranca.model.Professor;
 import javax.swing.JOptionPane;
-public class AtualizaAluno extends javax.swing.JFrame {
-    private Aluno alunoSelecionado;
-        /** Creates new form CadastroAluno */
-    public AtualizaAluno() {
+public class AtualizaProfessor extends javax.swing.JFrame {
+    private Professor professorSelecionado;
+        /** Creates new form CadastroProfessor */
+    public AtualizaProfessor() {
         initComponents();
     }
     
     public void alimentaFormulario() {
-        nome.setText(alunoSelecionado.getNome());
-        endereco.setText(alunoSelecionado.getEndereco());
-        cidade.setText(alunoSelecionado.getCidade());
-        rg.setText(alunoSelecionado.getRg());
-        cpf.setText(alunoSelecionado.getCpf());
-        estado.setSelectedItem(alunoSelecionado.getEstado());
+        nome.setText(professorSelecionado.getNome());
+        endereco.setText(professorSelecionado.getEndereco());
+        cidade.setText(professorSelecionado.getCidade());
+        rg.setText(professorSelecionado.getRg());
+        cpf.setText(professorSelecionado.getCpf());
+        estado.setSelectedItem(professorSelecionado.getEstado());
         // sexo
-        if (alunoSelecionado.getSexo().equals("masculino")){
+        if (professorSelecionado.getSexo().equals("masculino")){
             masculino.setSelected(true);
         }
         else feminino.setSelected(true);
         // documentos
-        if (alunoSelecionado.getDocumentos().contains("ensino médio")){
+        if (professorSelecionado.getDocumentos().contains("ensino médio")){
             em.setSelected(true);
         }
-        if (alunoSelecionado.getDocumentos().contains("militar")){
+        if (professorSelecionado.getDocumentos().contains("militar")){
             militar.setSelected(true);
         }
-        if (alunoSelecionado.getDocumentos().contains("contrato")){
+        if (professorSelecionado.getDocumentos().contains("contrato")){
             contrato.setSelected(true);
         }
     }
-    public void setAlunoSelecionado(Aluno alunoSelecionado){
-        this.alunoSelecionado = alunoSelecionado;
+    public void setProfessorSelecionado(Professor professorSelecionado){
+        this.professorSelecionado = professorSelecionado;
     }
   
     @SuppressWarnings("unchecked")
@@ -78,7 +78,7 @@ public class AtualizaAluno extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 51, 255));
-        jLabel5.setText("Tela de Atualização de Alunos");
+        jLabel5.setText("Tela de Atualização de Professores");
 
         jLabel6.setText("Sexo");
 
@@ -98,13 +98,18 @@ public class AtualizaAluno extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        em.setText("Conclusão EM");
+        em.setText("Licenciatura LI");
+        em.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Documentos");
 
-        militar.setText("Militar");
+        militar.setText("Graduação GR");
 
-        contrato.setText("Contrato");
+        contrato.setText("Mestrado ME");
 
         jButton1.setText("Atualizar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -132,16 +137,16 @@ public class AtualizaAluno extends javax.swing.JFrame {
                     .addComponent(jLabel9))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cpf, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                    .addComponent(cpf)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(masculino)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(feminino))
-                    .addComponent(estado, 0, 263, Short.MAX_VALUE)
-                    .addComponent(cidade, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                    .addComponent(endereco, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                    .addComponent(nome, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                    .addComponent(rg, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                    .addComponent(estado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cidade)
+                    .addComponent(endereco)
+                    .addComponent(nome)
+                    .addComponent(rg)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(em)
                         .addGap(18, 18, 18)
@@ -150,7 +155,7 @@ public class AtualizaAluno extends javax.swing.JFrame {
                         .addComponent(contrato)))
                 .addGap(102, 102, 102))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(104, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(87, 87, 87)
                 .addComponent(jButton1)
@@ -158,7 +163,7 @@ public class AtualizaAluno extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(124, 124, 124)
                 .addComponent(jLabel5)
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,12 +217,12 @@ public class AtualizaAluno extends javax.swing.JFrame {
 
 private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
-    // cria um objeto da classe Aluno
-    Aluno aluno = new Aluno();
+    // cria um objeto da classe Professor
+    Professor professor = new Professor();
     // atribui os valores do usuário
-    aluno.setCodigo(alunoSelecionado.getCodigo());
-    aluno.setCidade(cidade.getText());
-    aluno.setCpf(cpf.getText());
+    professor.setCodigo(professorSelecionado.getCodigo());
+    professor.setCidade(cidade.getText());
+    professor.setCpf(cpf.getText());
     String doc = "";
     if (em.isSelected()){
         doc = doc + " ensino médio";
@@ -228,11 +233,11 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     if (contrato.isSelected()){
         doc = doc + " contrato";
     }
-    aluno.setDocumentos(doc);
-    aluno.setEndereco(endereco.getText());
-    aluno.setEstado(estado.getSelectedItem().toString());
-    aluno.setNome(nome.getText());
-    aluno.setRg(rg.getText());
+    professor.setDocumentos(doc);
+    professor.setEndereco(endereco.getText());
+    professor.setEstado(estado.getSelectedItem().toString());
+    professor.setNome(nome.getText());
+    professor.setRg(rg.getText());
     String sexo = "";
     if (masculino.isSelected()){
         sexo = "masculino";
@@ -240,11 +245,11 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     else {
         sexo = "feminino";
     }
-    aluno.setSexo(sexo);
+    professor.setSexo(sexo);
     
     // view acessa o controller e recebe o resultado
-    AlunoController alunoController = new AlunoController();
-    if (alunoController.atualiza(aluno) == 1){
+    ProfessorController professorController = new ProfessorController();
+    if (professorController.atualiza(professor) == 1){
         JOptionPane.showMessageDialog(null, 
                 "Atualização com sucesso");
     }
@@ -253,6 +258,10 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 "Problema na atualização");
     }
 }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void emActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emActionPerformed
 
    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -268,13 +277,13 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AtualizaAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AtualizaProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AtualizaAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AtualizaProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AtualizaAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AtualizaProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AtualizaAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AtualizaProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -282,7 +291,7 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new AtualizaAluno().setVisible(true);
+                new AtualizaProfessor().setVisible(true);
             }
         });
     }
