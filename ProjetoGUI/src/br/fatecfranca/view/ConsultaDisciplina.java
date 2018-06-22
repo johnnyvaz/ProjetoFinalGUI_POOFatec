@@ -1,17 +1,17 @@
 
 package br.fatecfranca.view;
 
-import br.fatecfranca.controller.AlunoController;
-import br.fatecfranca.model.Aluno;
+import br.fatecfranca.controller.DisciplinaController;
+import br.fatecfranca.model.Disciplina;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class ConsultaAluno extends javax.swing.JFrame {
+public class ConsultaDisciplina extends javax.swing.JFrame {
     private DefaultTableModel modeloTabela;
-    private ArrayList<Aluno> alunos;
-    /** Creates new form ConsultaAluno */
-    public ConsultaAluno() {
+    private ArrayList<Disciplina> disciplinas;
+    /** Creates new form ConsultaDisciplina */
+    public ConsultaDisciplina() {
         initComponents();
         // recupera modelo da tabela
         modeloTabela = (DefaultTableModel) tabela.getModel();
@@ -32,16 +32,16 @@ public class ConsultaAluno extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel1.setText("Consulta Alunos");
+        jLabel1.setText("Consulta Disciplina");
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Código", "Nome", "Endereço", "Cidade", "Estado", "CPF", "RG", "Sexo", "Documentos"
+                "Código", "Nome", "Carga Horária", "Professor"
             }
         ));
         tabela.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -77,35 +77,35 @@ public class ConsultaAluno extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 824, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(135, 135, 135)
                         .addComponent(jButton1)
                         .addGap(40, 40, 40)
                         .addComponent(btnAtualiza)
                         .addGap(43, 43, 43)
-                        .addComponent(btnRemove)
-                        .addGap(234, 234, 234))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(308, 308, 308))))
+                        .addComponent(btnRemove))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(216, 216, 216)
+                        .addComponent(jLabel1)))
+                .addGap(0, 9, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel1)
-                .addGap(29, 29, 29)
+                .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(btnAtualiza)
                     .addComponent(btnRemove))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -114,32 +114,27 @@ public class ConsultaAluno extends javax.swing.JFrame {
 public void atualizaTabela(){
           btnRemove.setEnabled(false);
           btnAtualiza.setEnabled(false);
-    AlunoController alunoController = new
-            AlunoController();
-    alunos = (ArrayList) alunoController.consulta();
+    DisciplinaController disciplinaController = new
+            DisciplinaController();
+    disciplinas = (ArrayList) disciplinaController.consulta();
     // limpa a tabela
     modeloTabela.setRowCount(0);
     // alimenta tabela
-    if (alunos == null) {
+    if (disciplinas == null) {
         JOptionPane.showMessageDialog(null, 
                 "Problema na consulta");
     }
-    else if (alunos.isEmpty()){
+    else if (disciplinas.isEmpty()){
             JOptionPane.showMessageDialog(null, 
-                    "Não foram encontrados alunos");
+                    "Não foram encontrados disciplinas");
         }
         else {
-            Object objetos[] = new Object[9];
-            for (Aluno aluno: alunos){ // para cada aluno
-                objetos[0] = aluno.getCodigo();
-                objetos[1] = aluno.getNome();
-                objetos[2] = aluno.getEndereco();
-                objetos[3] = aluno.getCidade();
-                objetos[4] = aluno.getEstado();
-                objetos[5] = aluno.getCpf();
-                objetos[6] = aluno.getRg();
-                objetos[7] = aluno.getSexo();
-                objetos[8] = aluno.getDocumentos();
+            Object objetos[] = new Object[3];
+            for (Disciplina disciplina: disciplinas){ // para cada disciplina
+                objetos[0] = disciplina.getCodigo();
+                objetos[1] = disciplina.getNome();
+                objetos[2] = disciplina.getCargaHoraria();
+                objetos[3] = disciplina.getProfessor();
                 modeloTabela.addRow(objetos);
             }
         } 
@@ -165,10 +160,10 @@ private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         int linha = tabela.getSelectedRow();
         int codigo = 
 Integer.parseInt(modeloTabela.getValueAt(linha, 0).toString());
-        Aluno aluno = new Aluno();
-        aluno.setCodigo(codigo);
-        AlunoController alunoController = new AlunoController();
-        if (alunoController.remove(aluno) == 1){
+        Disciplina disciplina = new Disciplina();
+        disciplina.setCodigo(codigo);
+        DisciplinaController disciplinaController = new DisciplinaController();
+        if (disciplinaController.remove(disciplina) == 1){
             JOptionPane.showMessageDialog(null, "Removeu");
             atualizaTabela();
         }
@@ -179,15 +174,15 @@ Integer.parseInt(modeloTabela.getValueAt(linha, 0).toString());
 
 private void btnAtualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizaActionPerformed
 // TODO add your handling code here:
-    AtualizaAluno atualizaAluno = new AtualizaAluno();
+    AtualizaDisciplina atualizaDisciplina = new AtualizaDisciplina();
     // recupera linha selecionada
     int linha = tabela.getSelectedRow();
-    // recupera aluno selecionado do ArrayList
-    Aluno alunoSelecionado = alunos.get(linha); 
-    // atribui alunoSelecionado para objeto atualizaAluno
-    atualizaAluno.setAlunoSelecionado(alunoSelecionado);
-    atualizaAluno.alimentaFormulario();
-    atualizaAluno.setVisible(true);
+    // recupera disciplina selecionado do ArrayList
+    Disciplina disciplinaSelecionado = disciplinas.get(linha); 
+    // atribui disciplinaSelecionado para objeto atualizaDisciplina
+    atualizaDisciplina.setDisciplinaSelecionado(disciplinaSelecionado);
+    atualizaDisciplina.alimentaFormulario();
+    atualizaDisciplina.setVisible(true);
 }//GEN-LAST:event_btnAtualizaActionPerformed
 
     /**
@@ -207,21 +202,22 @@ private void btnAtualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConsultaAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaDisciplina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConsultaAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaDisciplina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConsultaAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaDisciplina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConsultaAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultaDisciplina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new ConsultaAluno().setVisible(true);
+                new ConsultaDisciplina().setVisible(true);
             }
         });
     }

@@ -1,85 +1,51 @@
 
 package br.fatecfranca.model;
-public class Aluno {
+public class Disciplina {
     private int codigo;
-    private String nome, endereco, cidade, estado, 
-            sexo, rg, cpf, documentos;
-    public Aluno() {
+    private String nome, cargaHoraria, professor;
+    public Disciplina() {
         this.codigo = 0;
         this.nome = "";
-        this.endereco = "";
-        this.cidade = "";
-        this.estado = "";
-        this.sexo = "";
-        this.rg = "";
-        this.cpf = ""; 
-        this.documentos = "";
+        this.cargaHoraria = "";
+        this.professor = "";
     }
-    public Aluno(int codigo, String nome, String endereco, String cidade, 
-         String estado, String sexo, String rg, String cpf, String documentos) {
+    public Disciplina(int codigo, String nome, String cargaHoraria, String professor) {
         this.codigo = codigo;
         this.nome = nome;
-        this.endereco = endereco;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.sexo = sexo;
-        this.rg = rg;
-        this.cpf = cpf;
-        this.documentos = documentos;
+        this.cargaHoraria = cargaHoraria;
+        this.professor = professor; 
     }
-    public String getCidade() {
-        return cidade;
-    }
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
+
     public int getCodigo() {
         return codigo;
     }
+
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
-    public String getCpf() {
-        return cpf;
-    }
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-    public String getDocumentos() {
-        return documentos;
-    }
-    public void setDocumentos(String documentos) {
-        this.documentos = documentos;
-    }
-    public String getEndereco() {
-        return endereco;
-    }
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-    public String getEstado() {
-        return estado;
-    }
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+
     public String getNome() {
         return nome;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public String getRg() {
-        return rg;
+
+    public String getCargaHoraria() {
+        return cargaHoraria;
     }
-    public void setRg(String rg) {
-        this.rg = rg;
+
+    public void setCargaHoraria(String cargaHoraria) {
+        this.cargaHoraria = cargaHoraria;
     }
-    public String getSexo() {
-        return sexo;
+
+    public String getProfessor() {
+        return professor;
     }
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
+
+    public void setProfessor(String professor) {
+        this.professor = professor;
     }
     
 }

@@ -24,6 +24,7 @@ public class AtualizaDisciplina extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        aluno1 = new br.fatecfranca.model.Aluno();
         jLabel1 = new javax.swing.JLabel();
         nome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -185,6 +186,7 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private br.fatecfranca.model.Aluno aluno1;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField cargaHoraria;
     private javax.swing.JButton jButton1;
